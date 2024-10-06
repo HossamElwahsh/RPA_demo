@@ -140,9 +140,9 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1510,4130" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="892.0000000000001,8245.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="EmployeesData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_employeesData" />
       <Variable x:TypeArguments="x:String" Name="useJS" />
       <Variable x:TypeArguments="x:String" Name="reportFilename" />
       <Variable x:TypeArguments="x:String" Name="columnsHtml" />
@@ -153,8 +153,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="608,108" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// 1. read data from excel, handling file in use or not found exceptions" />
-    <TryCatch DisplayName="Read Data" sap:VirtualizedContainerService.HintSize="608,57" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Read Data" sap:VirtualizedContainerService.HintSize="657.6,56.8" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -162,19 +161,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:ReadRange Range="{x:Null}" AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="VOIS TASK.xlsx">
+        <ui:ReadRange Range="{x:Null}" AddHeaders="True" DisplayName="Read Range from sheet1" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="VOIS TASK.xlsx">
           <ui:ReadRange.DataTable>
             <OutArgument x:TypeArguments="sd:DataTable">
-              <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">EmployeesData</CSharpReference>
+              <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">dt_employeesData</CSharpReference>
             </OutArgument>
           </ui:ReadRange.DataTable>
         </ui:ReadRange>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422.4,471.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -182,34 +181,33 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="e" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="416,401" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence sap:VirtualizedContainerService.HintSize="416,400" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error">
+              <ui:LogMessage DisplayName="Log data source access failed" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"[ERR] Excel data source file in use or not found | " + e.Message</CSharpValue>
                   </InArgument>
                 </ui:LogMessage.Message>
               </ui:LogMessage>
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="382,118" sap2010:WorkflowViewState.IdRef="MessageBox_3">
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" DisplayName="Message Box: data source access failed" sap:VirtualizedContainerService.HintSize="382.4,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_3">
                 <ui:MessageBox.Text>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">"Excel data source file in use or not found, check logs for more info"</CSharpValue>
                   </InArgument>
                 </ui:MessageBox.Text>
               </ui:MessageBox>
-              <ui:Return sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Return_2" />
+              <ui:Return DisplayName="Exit" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Return_2" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="608,89" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// 2. sort by newest join date first" />
-    <TryCatch DisplayName="Sort By Join Date" sap:VirtualizedContainerService.HintSize="608,57" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Sort By Join Date" sap:VirtualizedContainerService.HintSize="452.8,934.4" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -217,37 +215,37 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="416,514" sap2010:WorkflowViewState.IdRef="Sequence_33">
+        <Sequence sap:VirtualizedContainerService.HintSize="416,512.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,175" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace">
+          <ui:LogMessage DisplayName="Log sorting data started" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">"Trying to sort data"</CSharpValue>
               </InArgument>
             </ui:LogMessage.Message>
           </ui:LogMessage>
-          <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" SortOrder="Ascending">
+          <ui:SortDataTable ColumnIndex="{x:Null}" ColumnName="{x:Null}" DisplayName="Sort Employees Data Table" sap:VirtualizedContainerService.HintSize="382.4,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" SortOrder="Ascending">
             <ui:SortDataTable.DataColumn>
               <InArgument x:TypeArguments="sd:DataColumn">
-                <CSharpValue x:TypeArguments="sd:DataColumn" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">EmployeesData.Columns[7]</CSharpValue>
+                <CSharpValue x:TypeArguments="sd:DataColumn" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">dt_employeesData.Columns[7]</CSharpValue>
               </InArgument>
             </ui:SortDataTable.DataColumn>
             <ui:SortDataTable.DataTable>
               <InArgument x:TypeArguments="sd:DataTable">
-                <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">EmployeesData</CSharpValue>
+                <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">dt_employeesData</CSharpValue>
               </InArgument>
             </ui:SortDataTable.DataTable>
             <ui:SortDataTable.OutputDataTable>
               <OutArgument x:TypeArguments="sd:DataTable">
-                <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">EmployeesData</CSharpReference>
+                <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dt_employeesData</CSharpReference>
               </OutArgument>
             </ui:SortDataTable.OutputDataTable>
           </ui:SortDataTable>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
+          <ui:LogMessage DisplayName="Log data sorting finished" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">"Data sorted"</CSharpValue>
@@ -257,7 +255,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,23" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,213.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -268,7 +266,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="e" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn">
+            <ui:LogMessage DisplayName="Log sorting exception" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">"Possible sorting column not found, data entries unsorted | " + e.Message</CSharpValue>
@@ -279,14 +277,14 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence DisplayName="Create HTML Report File" sap:VirtualizedContainerService.HintSize="608,1324" sap2010:WorkflowViewState.IdRef="Sequence_42">
+    <Sequence DisplayName="Create HTML Report File" sap:VirtualizedContainerService.HintSize="657.6,1316.8" sap2010:WorkflowViewState.IdRef="Sequence_42">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="502,115" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign DisplayName="Generate report file name" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
             <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">reportFilename</CSharpReference>
@@ -298,26 +296,26 @@
           </InArgument>
         </Assign.Value>
       </Assign>
-      <ui:CreateFile ContinueOnError="{x:Null}" Output="{x:Null}" Path="{x:Null}" DisplayName="Create File" sap:VirtualizedContainerService.HintSize="502,167" sap2010:WorkflowViewState.IdRef="CreateFile_2">
+      <ui:CreateFile ContinueOnError="{x:Null}" Output="{x:Null}" Path="{x:Null}" DisplayName="Create report file" sap:VirtualizedContainerService.HintSize="500.8,166.4" sap2010:WorkflowViewState.IdRef="CreateFile_2">
         <ui:CreateFile.Name>
           <InArgument x:TypeArguments="x:String">
             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">reportFilename</CSharpValue>
           </InArgument>
         </ui:CreateFile.Name>
       </ui:CreateFile>
-      <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="Parse Table Headers" sap:VirtualizedContainerService.HintSize="502,313" sap2010:WorkflowViewState.IdRef="ForEach`1_6" MaxIterations="7">
+      <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="Parse Table Headers" sap:VirtualizedContainerService.HintSize="500.8,311.2" sap2010:WorkflowViewState.IdRef="ForEach`1_6" MaxIterations="7">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="sd:DataColumn">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="col" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,166" sap2010:WorkflowViewState.IdRef="Sequence_39">
+            <Sequence DisplayName="Generate columns html code" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign DisplayName="Assign columns html code to columnsHtml" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_6">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">
                     <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">columnsHtml</CSharpReference>
@@ -334,11 +332,11 @@
         </ui:ForEach.Body>
         <ui:ForEach.Values>
           <InArgument x:TypeArguments="sc:IEnumerable">
-            <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">EmployeesData.Columns</CSharpValue>
+            <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">dt_employeesData.Columns</CSharpValue>
           </InArgument>
         </ui:ForEach.Values>
       </ui:ForEach>
-      <Assign sap:VirtualizedContainerService.HintSize="502,115" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign DisplayName="Initialize rowsHtml variable" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
             <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">rowsHtml</CSharpReference>
@@ -350,19 +348,19 @@
           </InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="Parse Table Data (Rows)" sap:VirtualizedContainerService.HintSize="502,364" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="Parse Table Data (Rows)" sap:VirtualizedContainerService.HintSize="500.8,362.4" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,166" sap2010:WorkflowViewState.IdRef="Sequence_40">
+            <Sequence DisplayName="Generate rows html code" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_40">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign DisplayName="Assign rows html code to rowsHtml" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">
                     <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">rowsHtml</CSharpReference>
@@ -379,11 +377,11 @@
         </ui:ForEachRow.Body>
         <ui:ForEachRow.DataTable>
           <InArgument x:TypeArguments="sd:DataTable">
-            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">EmployeesData</CSharpValue>
+            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">dt_employeesData</CSharpValue>
           </InArgument>
         </ui:ForEachRow.DataTable>
       </ui:ForEachRow>
-      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Report" sap:VirtualizedContainerService.HintSize="502,158" sap2010:WorkflowViewState.IdRef="WriteTextFile_2">
+      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Report File to disk" sap:VirtualizedContainerService.HintSize="500.8,157.6" sap2010:WorkflowViewState.IdRef="WriteTextFile_2">
         <ui:WriteTextFile.FileName>
           <InArgument x:TypeArguments="x:String">
             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">reportFilename</CSharpValue>
@@ -465,8 +463,7 @@ columnsHtml +
         </ui:WriteTextFile.Text>
       </ui:WriteTextFile>
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="608,89" sap2010:WorkflowViewState.IdRef="Comment_2" Text="//3. data ready - open browser" />
-    <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="Flow choice" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="608,118" sap2010:WorkflowViewState.IdRef="MessageBox_5">
+    <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="Flow choice" DisplayName="Prompt to use javascript" sap:VirtualizedContainerService.HintSize="657.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_5">
       <ui:MessageBox.ChosenButton>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">useJS</CSharpReference>
@@ -478,27 +475,27 @@ columnsHtml +
         </InArgument>
       </ui:MessageBox.Text>
     </ui:MessageBox>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608,175" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace">
+    <ui:LogMessage DisplayName="Log launching browser" sap:VirtualizedContainerService.HintSize="657.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">"Launching browser"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: New Tab" sap:VirtualizedContainerService.HintSize="608,2090" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="Always" ScopeGuid="d8445b69-6933-4448-9e19-90ce2725a774" Version="V2">
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: New Tab" sap:VirtualizedContainerService.HintSize="657.6,6500" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="Always" ScopeGuid="d8445b69-6933-4448-9e19-90ce2725a774" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Browser Loop" sap:VirtualizedContainerService.HintSize="574,1849" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence DisplayName="Browser Loop" sap:VirtualizedContainerService.HintSize="624,6260" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="540,115" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_3" Version="V4" />
-            <Sequence DisplayName="Interaction Loop" sap:VirtualizedContainerService.HintSize="540,1672" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="590.4,114.4" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_3" Version="V4" />
+            <Sequence DisplayName="Interaction Loop" sap:VirtualizedContainerService.HintSize="590.4,6084" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="jsonData" />
                 <Variable x:TypeArguments="x:String" Name="entriesAdded" />
@@ -511,14 +508,14 @@ columnsHtml +
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:StartTimer DisplayName="Start Timer" sap:VirtualizedContainerService.HintSize="506,113" sap2010:WorkflowViewState.IdRef="StartTimer_2">
+              <ui:StartTimer DisplayName="Start Runtime Timer" sap:VirtualizedContainerService.HintSize="556.8,112.8" sap2010:WorkflowViewState.IdRef="StartTimer_2">
                 <ui:StartTimer.Timer>
                   <OutArgument x:TypeArguments="ui:Timer">
                     <CSharpReference x:TypeArguments="ui:Timer" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">timer</CSharpReference>
                   </OutArgument>
                 </ui:StartTimer.Timer>
               </ui:StartTimer>
-              <If sap:VirtualizedContainerService.HintSize="506,221" sap2010:WorkflowViewState.IdRef="If_1">
+              <If DisplayName="If using JS" sap:VirtualizedContainerService.HintSize="556.8,4636.8" sap2010:WorkflowViewState.IdRef="If_1">
                 <If.Condition>
                   <InArgument x:TypeArguments="x:Boolean">
                     <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">useJS.Equals("Yes")</CSharpValue>
@@ -531,22 +528,22 @@ columnsHtml +
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <Sequence DisplayName="Then using JS Block" sap:VirtualizedContainerService.HintSize="467.2,718.4" sap2010:WorkflowViewState.IdRef="Sequence_23">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="434,89" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Using Javascript" />
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,177" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info">
+                    <ui:Comment DisplayName="Using JS Block" sap:VirtualizedContainerService.HintSize="433.6,88" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Using Javascript" />
+                    <ui:LogMessage DisplayName="Log using javascript" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info">
                       <ui:LogMessage.Message>
                         <InArgument x:TypeArguments="x:Object">
                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">"Using javascript injection"</CSharpValue>
                         </InArgument>
                       </ui:LogMessage.Message>
                     </ui:LogMessage>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign DisplayName="Convert data to json" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">
                           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">jsonData</CSharpReference>
@@ -554,11 +551,11 @@ columnsHtml +
                       </Assign.To>
                       <Assign.Value>
                         <InArgument x:TypeArguments="x:String">
-                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">JsonConvert.SerializeObject(EmployeesData)</CSharpValue>
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">JsonConvert.SerializeObject(dt_employeesData)</CSharpValue>
                         </InArgument>
                       </Assign.Value>
                     </Assign>
-                    <uix:NInjectJsScript DisplayName="Inject Js Script" ExecutionWorld="Page" sap:VirtualizedContainerService.HintSize="434,282" sap2010:WorkflowViewState.IdRef="NInjectJsScript_4" ScriptCode="inject_employee.js" Version="V4">
+                    <uix:NInjectJsScript DisplayName="Inject Js Script to webpage" ExecutionWorld="Page" sap:VirtualizedContainerService.HintSize="433.6,280.8" sap2010:WorkflowViewState.IdRef="NInjectJsScript_4" ScriptCode="inject_employee.js" Version="V4">
                       <uix:NInjectJsScript.InputParameter>
                         <InArgument x:TypeArguments="x:String">
                           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">jsonData</CSharpValue>
@@ -579,30 +576,29 @@ columnsHtml +
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <Sequence DisplayName="Else using activities without JS" sap:VirtualizedContainerService.HintSize="523.2,3748" sap2010:WorkflowViewState.IdRef="Sequence_24">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="472,89" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Using UI Path Activities (no JS)" />
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,177" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info">
+                    <ui:Comment DisplayName="Using activities block start" sap:VirtualizedContainerService.HintSize="489.6,88" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Using UI Path Activities (no JS)" />
+                    <ui:LogMessage DisplayName="Log not using JS" sap:VirtualizedContainerService.HintSize="489.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info">
                       <ui:LogMessage.Message>
                         <InArgument x:TypeArguments="x:Object">
                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">"Not using javascript injection"</CSharpValue>
                         </InArgument>
                       </ui:LogMessage.Message>
                     </ui:LogMessage>
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="472,89" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// click start" />
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,543" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="489.6,752" sap2010:WorkflowViewState.IdRef="Sequence_20">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,451" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                      <TryCatch DisplayName="Try clicking start" sap:VirtualizedContainerService.HintSize="456,660" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -610,7 +606,7 @@ columnsHtml +
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <TryCatch.Try>
-                          <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="False" DisplayName="Click 'Start'" sap:VirtualizedContainerService.HintSize="334,195" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Timeout="10" Version="V4">
+                          <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="False" DisplayName="Click 'Start'" sap:VirtualizedContainerService.HintSize="333.6,193.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Timeout="10" Version="V4">
                             <uix:NClick.Target>
                               <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="adf19b08-d16d-429e-8b7d-06e7fe590e2c" DesignTimeRectangle="19, 636, 246, 54" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Start' innertext='Start' /&gt;" Guid="65200fa1-4ece-4cc0-9c7c-8250b32859e5" InformativeScreenshot="bdccadad7b8aad8cd4e7f1235fb39daf.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                             </uix:NClick.Target>
@@ -627,10 +623,10 @@ columnsHtml +
                           </uix:NClick>
                         </TryCatch.Try>
                         <TryCatch.Catches>
-                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422.4,472.8" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -638,52 +634,48 @@ columnsHtml +
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                               </ActivityAction.Argument>
-                              <Sequence sap:VirtualizedContainerService.HintSize="416,403" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                              <Sequence sap:VirtualizedContainerService.HintSize="416,401.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error">
+                                <ui:LogMessage DisplayName="Log failed to find/click start" sap:VirtualizedContainerService.HintSize="382.4,176" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error">
                                   <ui:LogMessage.Message>
                                     <InArgument x:TypeArguments="x:Object">
                                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">"Couldn't find/click on start button, aborting"</CSharpValue>
                                     </InArgument>
                                   </ui:LogMessage.Message>
                                 </ui:LogMessage>
-                                <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" Caption="Error" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="382,118" sap2010:WorkflowViewState.IdRef="MessageBox_9">
+                                <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" Caption="Error" DisplayName="Message Box: failed to click start" sap:VirtualizedContainerService.HintSize="382.4,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_9">
                                   <ui:MessageBox.Text>
                                     <InArgument x:TypeArguments="x:Object">
                                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">"Couldn't find/click on start button, aborting"</CSharpValue>
                                     </InArgument>
                                   </ui:MessageBox.Text>
                                 </ui:MessageBox>
-                                <ui:Return sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Return_5" />
+                                <ui:Return DisplayName="Exit from start btn" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Return_5" />
                               </Sequence>
                             </ActivityAction>
                           </Catch>
                         </TryCatch.Catches>
                       </TryCatch>
                     </Sequence>
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="472,89" sap2010:WorkflowViewState.IdRef="Comment_7" Text="// loop over data" />
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="472,2670" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <ui:Comment DisplayName="Comment: Loop over data" sap:VirtualizedContainerService.HintSize="489.6,88" sap2010:WorkflowViewState.IdRef="Comment_7" Text="// loop over data" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row (employee) in Data Table" sap:VirtualizedContainerService.HintSize="489.6,2479.2" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,2472" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="x:Int32" Name="columnIndex" />
-                            </Sequence.Variables>
+                          <Sequence DisplayName="Rows loop body" sap:VirtualizedContainerService.HintSize="416,2281.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:Comment sap:VirtualizedContainerService.HintSize="382,89" sap2010:WorkflowViewState.IdRef="Comment_8" Text="// fill data" />
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='First Name' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -709,7 +701,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Last Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Last Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Last Name' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -735,7 +727,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Company Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Company Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Company Name' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -761,7 +753,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Role in Company'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Role in Company'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Role in Company' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -787,7 +779,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Address'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_11" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Address'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_11" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Address' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -813,7 +805,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_12" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_12" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Email' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -839,7 +831,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Phone Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,288" sap2010:WorkflowViewState.IdRef="NTypeInto_13" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Phone Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_13" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NTypeInto.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="149aa0dd-2def-4a29-a560-26142726dfec" DesignTimeRectangle="387, 394, 191, 45" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Phone Number' tag='LABEL' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="39c2568c-019c-4cd7-b0aa-cf32fd6434b3" InformativeScreenshot="9becd6d578515ab0cc5d8226a4de06cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NTypeInto.Target>
@@ -865,8 +857,7 @@ columnsHtml +
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NTypeInto>
-                            <ui:Comment sap:VirtualizedContainerService.HintSize="382,89" sap2010:WorkflowViewState.IdRef="Comment_9" Text="// Submit" />
-                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="382,218" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="382.4,216.8" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d8445b69-6933-4448-9e19-90ce2725a774" Version="V4">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" CVScreenId="a7868c48-df6d-4b91-b3a5-ed93dff6cfca" DesignTimeRectangle="376, 545, 112, 36" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" Guid="8da4099e-0c9d-4f6a-b5cb-ded2ac4b16cb" InformativeScreenshot="54f02406f58a4640fc54ec58eb7e306a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                               </uix:NClick.Target>
@@ -886,7 +877,7 @@ columnsHtml +
                       </ui:ForEachRow.Body>
                       <ui:ForEachRow.DataTable>
                         <InArgument x:TypeArguments="sd:DataTable">
-                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">EmployeesData</CSharpValue>
+                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">dt_employeesData</CSharpValue>
                         </InArgument>
                       </ui:ForEachRow.DataTable>
                       <sap:WorkflowViewStateService.ViewState>
@@ -896,7 +887,7 @@ columnsHtml +
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEachRow>
-                    <Assign sap:VirtualizedContainerService.HintSize="472,106" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign DisplayName="Assign entriesAdded with submitted count" sap:VirtualizedContainerService.HintSize="489.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">
                           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">entriesAdded</CSharpReference>
@@ -904,21 +895,21 @@ columnsHtml +
                       </Assign.To>
                       <Assign.Value>
                         <InArgument x:TypeArguments="x:String">
-                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">EmployeesData.RowCount().ToString()</CSharpValue>
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">dt_employeesData.RowCount().ToString()</CSharpValue>
                         </InArgument>
                       </Assign.Value>
                     </Assign>
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:StopTimer DisplayName="Stop Timer" sap:VirtualizedContainerService.HintSize="506,113" sap2010:WorkflowViewState.IdRef="StopTimer_1">
+              <ui:StopTimer DisplayName="Stop Runtime Timer" sap:VirtualizedContainerService.HintSize="556.8,112.8" sap2010:WorkflowViewState.IdRef="StopTimer_1">
                 <ui:StopTimer.Timer>
                   <InArgument x:TypeArguments="ui:Timer">
                     <CSharpValue x:TypeArguments="ui:Timer" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">timer</CSharpValue>
                   </InArgument>
                 </ui:StopTimer.Timer>
               </ui:StopTimer>
-              <ui:AppendLine File="{x:Null}" DisplayName="Update report status" sap:VirtualizedContainerService.HintSize="506,167" sap2010:WorkflowViewState.IdRef="AppendLine_2" UseDefaultEncoding="False">
+              <ui:AppendLine File="{x:Null}" DisplayName="Update report status" sap:VirtualizedContainerService.HintSize="556.8,166.4" sap2010:WorkflowViewState.IdRef="AppendLine_2" UseDefaultEncoding="False">
                 <ui:AppendLine.FileName>
                   <InArgument x:TypeArguments="x:String">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">reportFilename</CSharpValue>
@@ -932,14 +923,14 @@ columnsHtml +
                   </InArgument>
                 </ui:AppendLine.Text>
               </ui:AppendLine>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="506,177" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info">
+              <ui:LogMessage DisplayName="Log Status" sap:VirtualizedContainerService.HintSize="556.8,176" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">"Submitted " + entriesAdded + " entries, completed in " + timer.ElapsedMilliseconds + " ms"</CSharpValue>
                   </InArgument>
                 </ui:LogMessage.Message>
               </ui:LogMessage>
-              <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="Finished" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="506,118" sap2010:WorkflowViewState.IdRef="MessageBox_8">
+              <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="Finished" DisplayName="Message Box: status and prompt to view report" sap:VirtualizedContainerService.HintSize="556.8,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_8">
                 <ui:MessageBox.ChosenButton>
                   <OutArgument x:TypeArguments="x:String">
                     <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">viewReport</CSharpReference>
@@ -951,7 +942,7 @@ columnsHtml +
                   </InArgument>
                 </ui:MessageBox.Text>
               </ui:MessageBox>
-              <If sap:VirtualizedContainerService.HintSize="506,676" sap2010:WorkflowViewState.IdRef="If_2">
+              <If DisplayName="If (view report)" sap:VirtualizedContainerService.HintSize="556.8,675.2" sap2010:WorkflowViewState.IdRef="If_2">
                 <If.Condition>
                   <InArgument x:TypeArguments="x:Boolean">
                     <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">viewReport.Equals("Yes")</CSharpValue>
@@ -964,15 +955,15 @@ columnsHtml +
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="472,404" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                  <Sequence DisplayName="Then if yes" sap:VirtualizedContainerService.HintSize="467.2,404" sap2010:WorkflowViewState.IdRef="Sequence_44">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="Try open report file" sap:VirtualizedContainerService.HintSize="438,344" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                    <TryCatch DisplayName="Try open report file" sap:VirtualizedContainerService.HintSize="433.6,344" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                       <TryCatch.Try>
-                        <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open report file" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="StartProcess_2">
+                        <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open report file" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_2">
                           <ui:StartProcess.FileName>
                             <InArgument x:TypeArguments="x:String">
                               <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">reportFilename</CSharpValue>
@@ -981,10 +972,10 @@ columnsHtml +
                         </ui:StartProcess>
                       </TryCatch.Try>
                       <TryCatch.Catches>
-                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,156.8" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -992,7 +983,7 @@ columnsHtml +
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,86" sap2010:WorkflowViewState.IdRef="MessageBox_10">
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box: failed to open report file" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_10">
                               <ui:MessageBox.Text>
                                 <InArgument x:TypeArguments="x:Object">
                                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_109">"Failed to open report file, please open manually\nFilename: " + reportFilename</CSharpValue>
@@ -1006,13 +997,13 @@ columnsHtml +
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                  <Sequence DisplayName="Else (no)" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_45">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:Return sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Return_7" />
+                    <ui:Return DisplayName="Return (end)" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Return_7" />
                   </Sequence>
                 </If.Else>
               </If>
